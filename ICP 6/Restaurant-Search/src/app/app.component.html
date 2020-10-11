@@ -1,9 +1,40 @@
 <div class="content">
   <div class="header">
-    <div class="navigation">
-      {{title}}
+    <div class="title_bar">
+      <h2>{{title}}</h2>
     </div>
   </div>
+    <div class="search_bar">
+      <div>
+      <span class="search_text"> Food Preference: </span>
+      <span class="search_food">
+        <label>
+          <input type="text" class="food_search_input" [(ngModel)]="search_food">
+        </label>
+      </span>
+      </div>
+      <div>
+      <span class="search_text" id="location_input"> Location: </span>
+      <span class="search_location">
+        <label>
+          <input type="text" class="loc_search_input" [(ngModel)]="search_location">
+        </label>
+      </span>
+      </div>
+      <div class="search_input" id="button_input"><input type="button" class="search_button" value="Submit" (click)="search()"></div>
+    </div>
+    <table class="search_table">
+      <tr class="search_header">
+        <td class="venue_name" style="font-weight: bold">Venue Name</td><td class="venue_address" style="font-weight: bold">Venue Address</td>
+      </tr>
+      <tbody class="search_results">
+        <tr class="result" *ngFor="let venue of venues">
+          <td class="venue_name">{{venue.name}}</td>
+          <td class="venue_address">{{venue.location.address}}</td>
+        </tr>
+      </tbody>
+    </table>
+
 </div>
 
 

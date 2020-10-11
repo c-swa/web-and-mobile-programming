@@ -32,7 +32,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602448883331</updated>
-      <workItem from="1602448884340" duration="1144000" />
+      <workItem from="1602448884340" duration="9666000" />
     </task>
     <servers />
   </component>
@@ -44,5 +44,9 @@
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="183" y="42" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1602450800602" />
+    <state x="676" y="30" width="697" height="745" key="dock-window-1" timestamp="1602454430026">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state x="676" y="30" width="697" height="745" key="dock-window-1/0.30.1366.738@0.30.1366.738" timestamp="1602454430026" />
   </component>
 </project>

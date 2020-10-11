@@ -1,0 +1,98 @@
+h2, table, tbody, tr, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+
+
+.content {
+  margin-left: 30%;
+  margin-right: 30%;
+
+  align-self: auto;
+
+  font-family: sans-serif;
+
+  padding: 1rem;
+
+  background-color: darkgrey;
+  border-radius: 0.5rem;
+}
+
+.header {
+  color: white;
+}
+
+.title_bar {
+  background-color: darkslategray;
+  border-radius: .5rem;
+
+  padding: 0.5rem;
+}
+
+.search_bar {
+  margin-top: 1rem;
+  background-color: darkslategray;
+  padding: .5rem;
+  border-radius: inherit;
+
+  display: flex;
+
+  color: white;
+}
+
+.search_text {
+  align-self: flex-start;
+}
+
+.search_food {
+  align-self: flex-end;
+}
+
+.search_bar #button_input {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.search_table {
+  color: white;
+  background-color: darkslategray;
+  margin-top: 1rem;
+  border-radius: .5rem;
+  padding: .5rem;
+
+  width: 100%;
+}
+
+.search_table tr, td {
+  padding: inherit;
+  border-radius: .5rem;
+  background-color: gray;
+  width: 50%;
+}
+
+.search_table .search_results tr, td{
+  padding: inherit;
+  border-radius: .5rem;
+  background-color: gray;
+  margin-top: inherit;
+}
+
+.search_table .venue_name {
+  text-align: left;
+  margin-right: 5pc;
+  border-radius: .5rem;
+}
+
+.search_table .venue_address {
+  text-align: right;
+  margin-left: 10%;
+  margin-right: 10%;
+  align-self: auto;
+  border-radius: .5rem;
+}
+
+
