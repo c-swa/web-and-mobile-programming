@@ -5,7 +5,6 @@
   <div class="search_bar">
     <div class="search_entry">
       <label>
-        Food Preference:
         <input type="text" class="search_recipe_input" [(ngModel)]="recipe" (keyup.enter)="search()">
         <input type="button" class="search_button" (click)="search()" value="Search.">
       </label>
@@ -17,15 +16,29 @@
         </tr>
         <tr class="result" *ngFor="let hit of hits">
           <td>
-            <img src="{{hit.recipe.image}}" width="100px">
+            <img src="{{hit.recipe.image}}" class="cover_image" width="100px" alt="{{hit.recipe.label}} cover image">
           </td>
+          <a href="{{hit.recipe.shareAs}}">
           <td>
             {{hit.recipe.label}}
           </td>
+          </a>
           <td>
             {{hit.recipe.calories | number: '1.0-0'}} Calories
           </td>
           <td>
+            Proteins:&nbsp;&nbsp;&nbsp;
+            {{hit.recipe.totalNutrients.PROCNT.quantity | number: '1.1-1'}} {{hit.recipe.totalNutrients.PROCNT.unit}}<br>
+            Fat:&nbsp;&nbsp;&nbsp;
+            {{hit.recipe.totalNutrients.FAT.quantity | number: '1.1-1'}} {{hit.recipe.totalNutrients.FAT.unit}}<br>
+            Carbs:&nbsp;&nbsp;&nbsp;
+            {{hit.recipe.totalNutrients.CHOCDF.quantity | number: '1.1-1'}} {{hit.recipe.totalNutrients.CHOCDF.unit}}<br>
+            Sugars:&nbsp;&nbsp;&nbsp;
+            {{hit.recipe.totalNutrients.SUGAR.quantity | number: '1.1-1'}} {{hit.recipe.totalNutrients.CHOCDF.unit}}
+          </td>
+          <td>
+            Serves:&nbsp;
+            {{hit.recipe.yield}}
           </td>
         </tr>
       </table>
@@ -33,4 +46,4 @@
   </div>
 </div>
 
-<route--outlet></route--outlet>
+<router-outlet></router-outlet>
