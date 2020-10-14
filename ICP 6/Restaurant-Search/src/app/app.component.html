@@ -30,7 +30,7 @@
       <tbody class="search_results">
         <tr class="result" *ngFor="let venue of venues">
           <td class="venue_name">{{venue.name}}</td>
-          <td class="venue_address">{{venue.location.address}}</td>
+          <td class="venue_address">{{venue.location.formattedAddress}}</td>
         </tr>
       </tbody>
     </table>
