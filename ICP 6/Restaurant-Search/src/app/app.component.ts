@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -27,21 +27,21 @@ export class AppComponent {
   quantity = '10';
 
   // Array outputting results from API call.
-  venues = []
+  venues = [];
 
   search(){
     // Sets up the URL of the API call
-    let search_url = "https://api.foursquare.com/v2/venues/search";
-    search_url += "?near=" + this.search_location;
-    search_url += "&radius=" + this.radius + "&limit=" + this.quantity;
-    search_url += "&query=" + this.search_food;
-    search_url += "&client_id=" + this.client_id + "&client_secret=" + this.client_secret;
-    search_url += "&v=" + this.version;
+    let search_url = 'https://api.foursquare.com/v2/venues/search';
+    search_url += '?near=' + this.search_location;
+    search_url += '&radius=' + this.radius + '&limit=' + this.quantity;
+    search_url += '&query=' + this.search_food;
+    search_url += '&client_id=' + this.client_id + '&client_secret=' + this.client_secret;
+    search_url += '&v=' + this.version;
 
     console.log(search_url);
 
     // Calls the API for a data retrieval.
-    this.httpClient.get<any>(search_url).subscribe(data=>{
+    this.httpClient.get<any>(search_url).subscribe(data => {
       console.log(data.response.venues);
       this.venues = data.response.venues;
       console.log(this.venues);
