@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c63b5bb7-889c-4405-b1bd-10f24b121927" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/icp-3" />
+  </component>
+  <component name="ProjectId" id="1hIbZtCOJ8S2ETig79bA6UhqFK1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/icp-3" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c63b5bb7-889c-4405-b1bd-10f24b121927" name="Default Changelist" comment="" />
+      <created>1599701613858</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599701613858</updated>
+      <workItem from="1599701615695" duration="7351000" />
+      <workItem from="1599776625673" duration="3989000" />
+      <workItem from="1599796395623" duration="4698000" />
+      <workItem from="1599860366952" duration="9392000" />
+      <workItem from="1600400403664" duration="4000" />
+      <workItem from="1600402271186" duration="31000" />
+      <workItem from="1601006813393" duration="352000" />
+      <workItem from="1602710431452" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="325" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599867503809">
+      <screen x="43" y="23" width="1637" height="1027" />
+    </state>
+    <state x="325" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.23.1637.1027@43.23.1637.1027" timestamp="1599867503809" />
+    <state x="861" y="23" width="818" height="1027" key="dock-window-1" timestamp="1599797226545">
+      <screen x="43" y="23" width="1637" height="1027" />
+    </state>
+    <state x="861" y="23" width="818" height="1027" key="dock-window-1/43.23.1637.1027@43.23.1637.1027" timestamp="1599797226545" />
+    <state x="524" y="248" key="search.everywhere.popup" timestamp="1599868895814">
+      <screen x="43" y="23" width="1637" height="1027" />
+    </state>
+    <state x="524" y="248" key="search.everywhere.popup/43.23.1637.1027@43.23.1637.1027" timestamp="1599868895814" />
+  </component>
+</project>
