@@ -35,7 +35,7 @@ export class BookCreateComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     this.api.postBook(form)
       .subscribe(res => {
-        let id = res['_id'];
+        const id = res['_id'];
         this.router.navigate(['/book-details', id]);
       }, (err) => {
         console.log(err);
