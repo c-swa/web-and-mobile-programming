@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.Console;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,8 +29,12 @@ public class MainActivity extends AppCompatActivity {
                 String passwordText = passwordCtrl.getText().toString();
 
                 if (Submit(usernameText, passwordText) == 0){
-                    Intent redirect = new Intent(MainActivity.this, WelcomeActivity.class);
-                    startActivity(redirect);
+                    try {
+                        Intent redirect = new Intent(MainActivity.this, WelcomeActivity.class);
+                        startActivity(redirect);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
                 }
             }
         });
