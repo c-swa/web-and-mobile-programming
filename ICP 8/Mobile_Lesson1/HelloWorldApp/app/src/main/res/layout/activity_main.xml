@@ -54,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.402"
+        android:inputType="textPassword"
         />
 
     <Button
@@ -72,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.628"
+        app:layout_constraintVertical_bias="0.52"
         tools:background="@color/colorPrimary" />
 
 </android.support.constraint.ConstraintLayout>
