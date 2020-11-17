@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
+
+// API Key: AIzaSyBkO-o5J-H_EKD4MyduwziPwlzqu04chyU
 
 public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -34,6 +37,8 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        // test added code?:
     }
 
     /**
@@ -69,7 +74,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             }
         };
         LatLng userCurrentLocationCorodinates = null;
-        double latitute = 0, longitude = 0;
+        double latitude = 0, longitude = 0;
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat
                 .checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -84,7 +89,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
         //Getting the address of the user based on latitude and longitude.
         try {
-            List<Address> addresses = geocoder.getFromLocation(latitute, longitude, 1);
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
             String country = addresses.get(0).getCountryName();
