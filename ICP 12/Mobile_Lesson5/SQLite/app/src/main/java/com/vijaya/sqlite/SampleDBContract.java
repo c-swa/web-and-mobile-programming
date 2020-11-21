@@ -12,6 +12,7 @@ public final class SampleDBContract {
     private SampleDBContract() {
     }
 
+    // Employer and Employee - view Employers on both activities
     public static class Employer implements BaseColumns {
         public static final String TABLE_NAME = "employer";
         public static final String COLUMN_NAME = "name";
@@ -26,6 +27,7 @@ public final class SampleDBContract {
                 COLUMN_FOUNDED_DATE + " INTEGER" + ")";
     }
 
+    // Employee Activity to view the Employees
     public static class Employee implements BaseColumns {
         public static final String TABLE_NAME = "employee";
         public static final String COLUMN_FIRSTNAME = "firstname";

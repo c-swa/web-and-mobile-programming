@@ -43,6 +43,11 @@ public class EmployerActivity extends AppCompatActivity {
         });
     }
 
+    // Deletes the displayed elements within the database.
+    private void deleteFromDB(){
+
+    }
+
     private void saveToDB() {
         SQLiteDatabase database = new SampleDBSQLiteHelper(this).getWritableDatabase();
         ContentValues values = new ContentValues();
