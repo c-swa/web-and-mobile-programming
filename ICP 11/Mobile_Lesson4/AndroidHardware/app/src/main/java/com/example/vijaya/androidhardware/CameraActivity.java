@@ -25,7 +25,12 @@ public class CameraActivity extends AppCompatActivity {
         userImage = (ImageView) findViewById(R.id.view_photo);
 
         // ICP Task2: Write the code to capture the image
+        capture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
 
     }
 

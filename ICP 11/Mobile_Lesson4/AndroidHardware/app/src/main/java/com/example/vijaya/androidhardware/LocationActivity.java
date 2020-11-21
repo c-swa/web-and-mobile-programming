@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,6 +34,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_location);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -40,6 +42,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
         // test added code?:
     }
+
 
     /**
      * Manipulates the map once available.
@@ -54,6 +57,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         geocoder = new Geocoder(this);
+
         StringBuilder userAddress = new StringBuilder();
         final LocationManager userCurrentLocation = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         LocationListener userCurrentLocationListener = new LocationListener() {
@@ -73,20 +77,35 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             public void onProviderDisabled(String provider) {
             }
         };
-        LatLng userCurrentLocationCorodinates = null;
-        double latitude = 0, longitude = 0;
+        
+        LatLng userCurrentLocationCoordinates = new LatLng(latitude,longitude);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat
                 .checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             //show message or ask permissions from the user.
+            ActivityCompat.requestPermissions(LocationActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
 
         //Getting the current location of the user.
 
         // ICP Task1: Write the code to get the current location of the user
-
+        try {
+            if (userCurrentLocation.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                Location new_location = userCurrentLocation.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (new_location != null){
+                    latitude = new_location.getLatitude();
+                    longitude = new_location.getLongitude();
+                    userCurrentLocationCoordinates = new LatLng(latitude, longitude);
+                }
+            } else {
+                System.out.println("Failed to get Latitude/Longitude");
+            }
+        } catch (Exception e){
+            System.out.println("An Error occurred, Exception:");
+            System.out.println(e);
+        }
         //Getting the address of the user based on latitude and longitude.
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
@@ -102,14 +121,12 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             ex.printStackTrace();
         }
         //Setting our image as the marker icon.
-        mMap.addMarker(new MarkerOptions().position(userCurrentLocationCorodinates)
+        mMap.addMarker(new MarkerOptions().position(userCurrentLocationCoordinates)
                 .title("Your current address.").snippet(userAddress.toString())
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_maps)));
         //Setting the zoom level of the map.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCorodinates, 7));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCoordinates, 7));
+
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-    }
 }
