@@ -62,6 +62,28 @@ public class EmployeeActivity extends AppCompatActivity {
                 readFromDB();
             }
         });
+
+        binding.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteFromDB();
+            }
+        });
+
+        binding.updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateDB();
+            }
+        });
+    }
+
+    private void updateDB() {
+
+    }
+
+    private void deleteFromDB() {
+        
     }
 
     private void saveToDB() {

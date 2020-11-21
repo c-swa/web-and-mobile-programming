@@ -12,7 +12,7 @@ public final class SampleDBContract {
     private SampleDBContract() {
     }
 
-    // Employer and Employee - view Employers on both activities
+    // Employer and Employee - view Employers on both activities1
     public static class Employer implements BaseColumns {
         public static final String TABLE_NAME = "employer";
         public static final String COLUMN_NAME = "name";
