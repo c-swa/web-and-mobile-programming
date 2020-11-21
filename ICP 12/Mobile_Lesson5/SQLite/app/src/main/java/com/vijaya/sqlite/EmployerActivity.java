@@ -138,6 +138,11 @@ public class EmployerActivity extends AppCompatActivity {
         }
         long newRowId = database.insert(SampleDBContract.Employer.TABLE_NAME, null, values);
 
+        // Clear text from the inputs
+        binding.nameEditText.setText("");
+        binding.descEditText.setText("");
+        binding.foundedEditText.setText("");
+
         Toast.makeText(this, "The new Row id is " + newRowId, Toast.LENGTH_LONG).show();
     }
 
