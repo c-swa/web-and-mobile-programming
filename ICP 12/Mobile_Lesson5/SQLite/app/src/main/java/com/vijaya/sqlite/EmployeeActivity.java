@@ -79,11 +79,80 @@ public class EmployeeActivity extends AppCompatActivity {
     }
 
     private void updateDB() {
+        SQLiteDatabase database = new SampleDBSQLiteHelper(this).getWritableDatabase();
+        ContentValues values = new ContentValues();
 
+        String updateFirstName = binding.firstnameEditText.getText().toString();
+        String updateLastName = binding.lastnameEditText.getText().toString();
+        String updateJobDesc = binding.jobDescEditText.getText().toString();
+
+        int employerSelection = ((Cursor)binding.employerSpinner.getSelectedItem()).getInt(0);
+
+        long dob;
+        long doe;
+
+        try {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime((new SimpleDateFormat("dd/MM/yyyy")).parse(binding.dobEditText.getText().toString()));
+            dob = calendar.getTimeInMillis();
+            calendar.setTime((new SimpleDateFormat("dd/MM/yyyy")).parse(binding.employedEditText.getText().toString()));
+            doe = calendar.getTimeInMillis();
+        } catch (Exception e){
+            Log.e(TAG,"Error thrown:",e);
+            Toast.makeText(this, "Date is in the wrong format",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        values.put(SampleDBContract.Employee.COLUMN_EMPLOYER_ID,employerSelection);
+        values.put(SampleDBContract.Employee.COLUMN_JOB_DESCRIPTION,updateJobDesc);
+        values.put(SampleDBContract.Employee.COLUMN_DATE_OF_BIRTH,dob);
+        values.put(SampleDBContract.Employee.COLUMN_EMPLOYED_DATE,doe);
+
+        String updateClause = SampleDBContract.Employee.COLUMN_LASTNAME + " LIKE ? AND " +
+                SampleDBContract.Employee.COLUMN_FIRSTNAME + " LIKE ?";
+        String[] updateArgs = {
+                "%" + updateLastName + "%",
+                "%" + updateFirstName + "%"
+        };
+
+        database.update(SampleDBContract.Employee.TABLE_NAME,values,updateClause,updateArgs);
+        Toast.makeText(this,"Updated employee(s) information with updated data",Toast.LENGTH_LONG);
+        readFromDB();
+
+        // Clear inputs
+        binding.lastnameEditText.setText("");
+        binding.firstnameEditText.setText("");
+        binding.jobDescEditText.setText("");
+        binding.dobEditText.setText("");
+        binding.employedEditText.setText("");
     }
 
     private void deleteFromDB() {
-        
+        SQLiteDatabase database = new SampleDBSQLiteHelper(this).getReadableDatabase();
+
+        String deleteFirstName = binding.firstnameEditText.getText().toString();
+        String deleteLastName = binding.lastnameEditText.getText().toString();
+
+        String deleteClause = SampleDBContract.Employee.COLUMN_FIRSTNAME +
+                " LIKE ? AND " + SampleDBContract.Employee.COLUMN_LASTNAME +
+                " LIKE ?";
+        String[] deleteArgs = {
+                "%" + deleteFirstName + "%",
+                "%" + deleteLastName + "%"
+        };
+
+        database.delete(SampleDBContract.Employee.TABLE_NAME,deleteClause,deleteArgs);
+        binding.firstnameEditText.setText("");
+        binding.lastnameEditText.setText("");
+
+        Toast.makeText(this, "Deleted item(s) from database", Toast.LENGTH_LONG).show();
+        readFromDB();
+        // Clear inputs
+        binding.lastnameEditText.setText("");
+        binding.firstnameEditText.setText("");
+        binding.jobDescEditText.setText("");
+        binding.dobEditText.setText("");
+        binding.employedEditText.setText("");
     }
 
     private void saveToDB() {
@@ -117,17 +186,29 @@ public class EmployeeActivity extends AppCompatActivity {
         long newRowId = database.insert(SampleDBContract.Employee.TABLE_NAME, null, values);
 
         Toast.makeText(this, "The new Row Id is " + newRowId, Toast.LENGTH_LONG).show();
+        // Clear inputs
+        binding.lastnameEditText.setText("");
+        binding.firstnameEditText.setText("");
+        binding.jobDescEditText.setText("");
+        binding.dobEditText.setText("");
+        binding.employedEditText.setText("");
     }
 
     private void readFromDB() {
-        String firstname = binding.firstnameEditText.getText().toString();
-        String lastname = binding.lastnameEditText.getText().toString();
+        String firstName = binding.firstnameEditText.getText().toString();
+        String lastName = binding.lastnameEditText.getText().toString();
 
         SQLiteDatabase database = new SampleDBSQLiteHelper(this).getReadableDatabase();
 
-        String[] selectionArgs = {"%" + firstname + "%", "%" + lastname + "%"};
+        String[] selectionArgs = {"%" + firstName + "%", "%" + lastName + "%"};
 
         Cursor cursor = database.rawQuery(SampleDBContract.SELECT_EMPLOYEE_WITH_EMPLOYER, selectionArgs);
         binding.recycleView.setAdapter(new SampleJoinRecyclerViewCursorAdapter(this, cursor));
+        // Clear inputs
+        binding.lastnameEditText.setText("");
+        binding.firstnameEditText.setText("");
+        binding.jobDescEditText.setText("");
+        binding.dobEditText.setText("");
+        binding.employedEditText.setText("");
     }
 }

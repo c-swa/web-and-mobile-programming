@@ -76,7 +76,7 @@ public class EmployerActivity extends AppCompatActivity {
             long date = calendar.getTimeInMillis();
             updateDate = date;
         } catch (Exception e){
-            Log.e(TAG,"Error", e);
+            Log.e(TAG,"Error thrown:", e);
             Toast.makeText(this,"Date is in the wrong format", Toast.LENGTH_LONG).show();
             return;
         }
@@ -94,6 +94,10 @@ public class EmployerActivity extends AppCompatActivity {
         Toast.makeText(this,"Updated database with modified arguments",Toast.LENGTH_LONG).show();
 
         readFromDB();
+        // Clear text from the inputs
+        binding.nameEditText.setText("");
+        binding.descEditText.setText("");
+        binding.foundedEditText.setText("");
     }
 
     // Deletes the displayed elements within the database.
@@ -189,5 +193,9 @@ public class EmployerActivity extends AppCompatActivity {
         // Even though the database is displayed, I want to make sure the user knows that the database
         // has been reloaded.
         Toast.makeText(this,"Displaying database entries",Toast.LENGTH_SHORT).show();
+        // Clear text from the inputs
+        binding.nameEditText.setText("");
+        binding.descEditText.setText("");
+        binding.foundedEditText.setText("");
     }
 }
