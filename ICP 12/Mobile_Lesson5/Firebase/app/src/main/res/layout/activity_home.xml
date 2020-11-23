@@ -68,6 +68,31 @@
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
+        <Button
+            android:layout_marginTop="3dp"
+            android:id="@+id/btn_logout"
+            style="?android:textAppearanceSmall"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout" />
+
+        <Button
+            android:layout_marginTop="3dp"
+            android:id="@+id/btn_delete"
+            style="?android:textAppearanceSmall"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete" />
+
+
     </LinearLayout>
+
+
 
 </LinearLayout>

@@ -1,6 +1,8 @@
 package com.vijaya.firebase;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,12 +10,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.Console;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -21,6 +30,11 @@ public class HomeActivity extends AppCompatActivity {
     private TextView txtDetails;
     private EditText inputName, inputPhone;
     private Button btnSave;
+    private Button btnLogout;
+    private Button btnDelete;
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseUser user;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
 
@@ -39,8 +53,13 @@ public class HomeActivity extends AppCompatActivity {
         inputName = (EditText) findViewById(R.id.name);
         inputPhone = (EditText) findViewById(R.id.phone);
         btnSave = (Button) findViewById(R.id.btn_save);
+        btnLogout = (Button) findViewById(R.id.btn_logout);
+        btnDelete = (Button) findViewById(R.id.btn_delete);
 
         mFirebaseInstance = FirebaseDatabase.getInstance();
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         // get reference to 'users' node
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
@@ -67,6 +86,25 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // this listener will be called when there is change in firebase user session
+        /* authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // user authState is changed -user is null
+                    // launch login activity
+                    startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        };
+         */
+
+        // User ID is never set...
+        userId = user.getUid();
+
+
         // Save / update the user
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +121,52 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                delete();
+            }
+        });
+
         toggleButton();
+
+        System.out.println(user.getUid());
     }
+
+    private void delete() {
+        user.delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User account deleted.");
+                        }
+                    }
+                });
+        logout();
+    }
+
+    private void logout() {
+        if (user != null){
+            auth.signOut();
+            Toast.makeText(this, user.getEmail()+ " Sign out!", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "You aren't login Yet!", Toast.LENGTH_SHORT).show();
+        }
+        startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+        finish();
+    }
+
+
+
 
     // Changing button text
     private void toggleButton() {
