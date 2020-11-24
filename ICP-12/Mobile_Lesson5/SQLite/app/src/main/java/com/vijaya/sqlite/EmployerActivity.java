@@ -43,15 +43,6 @@ public class EmployerActivity extends AppCompatActivity {
             }
         });
 
-        // Added Update Button
-        // Updates the name, description, and founded date of the company.
-        binding.updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateDB();
-            }
-        });
-
         binding.searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,45 +51,6 @@ public class EmployerActivity extends AppCompatActivity {
         });
     }
 
-    // Updates the data in the Database
-    private void updateDB(){
-        SQLiteDatabase database = new SampleDBSQLiteHelper(this).getWritableDatabase();
-        ContentValues value = new ContentValues();
-
-        String updateName = binding.nameEditText.getText().toString();
-        String updateDesc = binding.descEditText.getText().toString();
-        long updateDate;
-
-        try {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime((new SimpleDateFormat("dd/MM/yyy")).parse(
-                    binding.foundedEditText.getText().toString()));
-            long date = calendar.getTimeInMillis();
-            updateDate = date;
-        } catch (Exception e){
-            Log.e(TAG,"Error thrown:", e);
-            Toast.makeText(this,"Date is in the wrong format", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        value.put(SampleDBContract.Employer.COLUMN_NAME, updateName);
-        value.put(SampleDBContract.Employer.COLUMN_DESCRIPTION, updateDesc);
-        value.put(SampleDBContract.Employer.COLUMN_FOUNDED_DATE, updateDate);
-
-        String[] updateArgs = {
-                "%" + updateName + "%"
-        };
-        String updateClause = SampleDBContract.Employer.COLUMN_NAME + " LIKE ?";
-
-        database.update(SampleDBContract.Employer.TABLE_NAME,value,updateClause,updateArgs);
-        Toast.makeText(this,"Updated database with modified arguments",Toast.LENGTH_LONG).show();
-
-        readFromDB();
-        // Clear text from the inputs
-        binding.nameEditText.setText("");
-        binding.descEditText.setText("");
-        binding.foundedEditText.setText("");
-    }
 
     // Deletes the displayed elements within the database.
     private void deleteFromDB(){

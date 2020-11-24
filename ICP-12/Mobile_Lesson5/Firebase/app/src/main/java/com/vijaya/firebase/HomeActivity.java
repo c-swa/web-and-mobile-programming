@@ -101,8 +101,6 @@ public class HomeActivity extends AppCompatActivity {
         };
          */
 
-        // User ID is never set...
-        userId = user.getUid();
 
 
         // Save / update the user

@@ -80,18 +80,6 @@
                 android:layout_below="@id/saveButton" />
 
             <Button
-                android:id="@+id/updateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/foundedInputLayout"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_toStartOf="@+id/saveButton"
-                android:layout_toLeftOf="@+id/saveButton"
-                android:text="Update" />
-
-            <Button
                 android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
