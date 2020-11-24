@@ -1,4 +1,5 @@
 # web-and-mobile-programming
+The wiki for this, as well as an index page for the repo can be found [here](https://github.com/c-swa/web-and-mobile-programming/wiki).
 
 ## Welcome!
 
