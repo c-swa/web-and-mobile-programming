@@ -20,4 +20,7 @@ ICP 6 contains two applications, a Restaurant/Venue Search dependent upon the Fo
 The other application is a recipe search based off of...
 
 ## In-Class Programming 7:
- ICP 7 is...
+ ICP 7 is a MEAN stack application titled Library Management System. The goal of the application is to build something that will be a front end for a database that will store the data of "Books", while the application itself modifies the entries within the database.
+ 
+ ## In-Class Programming 8:
+ 
