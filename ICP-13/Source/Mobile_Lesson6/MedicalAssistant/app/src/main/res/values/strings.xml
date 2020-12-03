@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MedicalAssistant</string>
+    <string name="hint">Tap on the robot to start</string>
+</resources>
