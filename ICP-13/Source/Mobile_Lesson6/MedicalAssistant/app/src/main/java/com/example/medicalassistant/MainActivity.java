@@ -22,6 +22,7 @@ import android.speech.tts.TextToSpeech;
 
 
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity {
 
     // Speech-to-Text
