@@ -27,7 +27,7 @@
     "express": "^4.17.1",
     "http-errors": "^1.6.3",
     "mongodb": "^3.6.3",
-    "mongoose": "^5.11.1",
+    "mongoose": "^5.11.4",
     "morgan": "^1.10.0",
     "node-sass": "^5.0.0",
     "rxjs": "^6.0.0",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1100.2",
-    "@angular/cli": "^11.0.2",
+    "@angular/cli": "^11.0.3",
     "@angular/compiler-cli": "^11.0.2",
     "@angular/language-service": "^6.0.0",
     "@types/jasmine": "~2.8.6",
