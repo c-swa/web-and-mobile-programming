@@ -32,7 +32,7 @@ export class ApiService {
   }
 
   private extractData(res: Response) {
-    let body = res;
+    const body = res;
     return body || {};
   }
 
