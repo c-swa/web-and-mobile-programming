@@ -3,6 +3,7 @@
 
 package com.example.notification;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -11,10 +12,18 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.Space;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,10 +31,50 @@ public class MainActivity extends AppCompatActivity {
     public int notificationId = 1;
     public String CHANNEL_ID = "one";
 
+    private TextView title;
+    private TextView displayDate;
+
+    private Calendar calendar = Calendar.getInstance();
+    private CalendarView simpleCalendar;
+    private Space spacer;
+
+    private Button newEvent;
+
+    private int year, month, day;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        title = findViewById(R.id.title);
+        displayDate = (TextView) findViewById(R.id.displayDate);
+        simpleCalendar = findViewById(R.id.simpleCalendar);
+        newEvent = findViewById(R.id.newEventButton);
+
+        spacer = findViewById(R.id.spacer);
+
+        simpleCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int y, int m, int d) {
+                displayDate.setText(String.format("Selected Date:\n" +
+                        "%d/%d/%d", m + 1, d, y));
+
+                year = y;
+                month = m;
+                day = d;
+            }
+        });
+
+        newEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createEvent();
+            }
+        });
+
+
+        displayDate.setText(String.format("Today's Date:\n%s", String.valueOf(Calendar.getInstance().getTime())));
 
         // Create the NotificationChannel
         // you should execute this code as soon as your app starts
@@ -42,26 +91,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void sendNotification(View view) {
-        // Set the notification's tap action
-        // Create an explicit intent for an Activity in your app
-        Intent intent = new Intent(this, AlertDetails.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+    public void createEvent(){
+        Intent intent = new Intent(Intent.ACTION_INSERT,
+                CalendarContract.Events.CONTENT_URI);
+        intent.putExtra(CalendarContract.Events.TITLE, "This event is from \'Notification\' app.");
+        intent.putExtra(CalendarContract.Events.DESCRIPTION,
+                "Learn Android Coding in Java");
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION,
+                "UMKC");
+        // set time to calendar
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(year, month, day);
+        // pass time through
+        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                startTime.getTimeInMillis());
+        intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+        startActivity(intent);
+    }
 
-        // Create a basic notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "one");
-        builder.setSmallIcon(R.drawable.notification_icon);
-        builder.setContentTitle("Message");
-        builder.setContentText("This is an example for notification app");
-        builder.setStyle(new NotificationCompat.BigTextStyle().bigText("This is an example for notification app"));
-        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        builder.setContentIntent(pendingIntent);
-        builder.setAutoCancel(true);
-
-        // Show the notification
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(notificationId, builder.build());
+    public void displayEvent(){
+        Calendar.getInstance().set(2010,1,1,0,0);
+        Uri uri = Uri.parse("content://com.android.calendar/time"
+                + String.valueOf(Calendar.getInstance().getTimeInMillis()));
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }

@@ -10,31 +10,37 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/hellotext"
-        android:layout_width="match_parent"
-        android:layout_height="138dp"
-        android:fontFamily="@font/cambo"
-        android:gravity="center"
-        android:text="@string/hello_all"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
-
-    <Button
-        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
-        android:fontFamily="@font/cambo"
-        android:onClick="sendNotification"
-        android:text="@string/send"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:backgroundTint="#2196F3" />
+        android:id="@+id/title"
+        android:text="@string/calendarApplication"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/displayDate"
+        android:text="Today's Date:\n"
+        />
 
-    <LinearLayout
+    <CalendarView
+        android:id="@+id/simpleCalendar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
-
+        android:layout_height="349dp"
+        android:layout_marginBottom="50dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spacer"
+        android:minHeight="75dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newEventButton"
+        android:text="Create New Event"
+        />
 
 </LinearLayout>

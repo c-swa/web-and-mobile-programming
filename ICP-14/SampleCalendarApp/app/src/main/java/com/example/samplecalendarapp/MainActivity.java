@@ -31,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void disp() {
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(2010, 2, 21, 9, 9);
+        Calendar rightNow = Calendar.getInstance();
         Uri uri = Uri.parse("content://com.android.calendar/time/"
-                + String.valueOf(startTime.getTimeInMillis()));
+                + String.valueOf(rightNow.getTimeInMillis()));
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         // Use the Calendar app to view the time.
         startActivity(intent);
