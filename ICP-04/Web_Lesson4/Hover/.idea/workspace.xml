@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="485d5af7-df02-4b78-a61a-c4316a7a4fd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/hover.css" beforeDir="false" afterPath="$PROJECT_DIR$/hover.css" afterDir="false" />
-    </list>
+    <list default="true" id="485d5af7-df02-4b78-a61a-c4316a7a4fd6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +20,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GitHubUserFinder" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -33,7 +31,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609016014196</updated>
-      <workItem from="1609016016456" duration="304000" />
+      <workItem from="1609016016456" duration="1087000" />
     </task>
     <servers />
   </component>

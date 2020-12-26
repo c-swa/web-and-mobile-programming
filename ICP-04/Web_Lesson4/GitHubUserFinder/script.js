@@ -1,7 +1,6 @@
 function getGithubInfo(user) {
     //1. Create an instance of XMLHttpRequest class and send a GET request using it.
     // The function should finally return the object(it now contains the response!)
-
     // Function searches for the User on GitHub's API (using REST API)
     // If no user is found, then the error function "noSuchUser()" is called.
     fetch("https://api.github.com/users/" + user)
