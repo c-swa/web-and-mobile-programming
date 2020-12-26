@@ -6,10 +6,10 @@ Look into Object-Oriented JavaScript along with jQuery. We'll also learn how to 
 The frame should also then change its text to match that of the hovered image.
 
 - 2. GitHub User Finder. Create a web app that calls the GitHub API, and displays user's account details when any user is searched by their username.
-- a. Name of the user
-- b. ID of the user
-- c. Profile picture
-- d. Link to the user
+- - a. Name of the user
+- - b. ID of the user
+- - c. Profile picture
+- - d. Link to the user
 
 # Lesson Submission
 - 1. ICP Submissions are individual contributions.
