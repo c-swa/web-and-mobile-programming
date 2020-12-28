@@ -1,0 +1,77 @@
+.status-color {
+  height: auto;
+  width: auto;
+  cursor: pointer;
+}
+
+.todo-completed {
+  background: #4c2525;
+  color: #ffffff;
+  text-decoration: line-through;
+}
+
+.is-completed {
+  background: #602323;
+  color: #ffffff;
+  text-decoration: line-through;
+}
+
+.todo-text {
+  color: white;
+  width: 40%;
+}
+
+.delete-button {
+  cursor: pointer;
+  background: red;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.todo-list-item {
+  background: #3b3b3b;
+}
+
+div {
+  background: dimgray;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+
+.todo-table {
+  display: inline-table;
+  width: 60%;
+}
+
+.todo-table div {
+  background: dimgray;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 6px;
+  display: inline-table;
+  width: 80%;
+}
+
+span {
+  background: #222;
+  color: #fff;
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  padding: 5px 10px;
+  border-radius: 6px;
+  vertical-align: middle;
+}
+
+.submit-button {
+  background: dimgray;
+  color: white;
+
+}
+
+/* timer counter css below */
+

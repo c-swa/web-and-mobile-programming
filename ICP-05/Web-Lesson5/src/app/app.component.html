@@ -1,0 +1,39 @@
+<h1 class="text-center">{{title}}</h1>
+<div class="container">
+  <div class="to-do-list">
+    <div class="input-row">
+      <span class="input-text">
+        <input type="text" [(ngModel)]="newTask" (keydown.enter)="createNewTask()"/>
+      </span>
+      <span class="input-submit">
+        <button type="submit" class="submit-button" (click)="createNewTask()">
+          Add Task
+        </button>
+      </span>
+    </div>
+
+    <div class="task-list">
+        <div class="todo-table">
+          <div *ngFor="let task of tasks; let index = index;" class="todo-list-item" style="margin: 5px">
+            <span class="status-color" [class.is-completed]="task.isComplete" (click)="markComplete(index)">mark.</span>
+            <span class="todo-text" [class.todo-completed]="task.isComplete">{{task.taskName}}</span>
+            <span class="delete-button" (click)="deleteTask(index)">del.</span>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<h2 class="text-center">Timer</h2>
+<div class="container">
+  <div class="timer-table">
+    <span class="counter" id="day-counter">
+    </span>
+    <span class="counter" id="hour-counter">
+    </span>
+    <span class="counter" id="min-counter">
+    </span>
+    <span class="counter" id="sec-counter">
+    </span>
+  </div>
+</div>
