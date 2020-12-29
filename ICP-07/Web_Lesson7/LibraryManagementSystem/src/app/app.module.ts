@@ -58,7 +58,7 @@ const appRoutes: Routes = [
     BookEditComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
