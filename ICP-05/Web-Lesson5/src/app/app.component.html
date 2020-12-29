@@ -26,14 +26,33 @@
 <hr>
 <h2 class="text-center">Timer</h2>
 <div class="container">
+  <div class="timer-table-header">
+    <div>
+      <span>
+        <input type="date" [(ngModel)]="date">
+      </span>
+      <span>
+        <input type="time" [(ngModel)]="time">
+      </span>
+    </div>
+    <div>
+      <span>
+        <button (click)="showTimer()">start.</button>
+      </span>
+      <span>
+        <button (click)="stopTimer()">stop.</button>
+      </span>
+    </div>
+  </div>
   <div class="timer-table">
-    <span class="counter" id="day-counter">
-    </span>
-    <span class="counter" id="hour-counter">
-    </span>
-    <span class="counter" id="min-counter">
-    </span>
-    <span class="counter" id="sec-counter">
+    <span class="timer text-center" *ngIf="timerText">
+      <span class="timer-days">{{timerText.days}}</span>
+      <span class="timer-days">days</span>
+      <span class="timer-hours">{{timerText.hours}}</span>
+      <span class="timer-div">:</span>
+      <span class="timer-mins">{{timerText.minutes}}</span>
+      <span class="timer-div">:</span>
+      <span class="timer-secs">{{timerText.seconds}}</span>
     </span>
   </div>
 </div>

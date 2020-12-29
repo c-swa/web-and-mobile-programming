@@ -17,10 +17,18 @@ export class AppComponent {
   task = '';
 
   // Timer
+
+  date: string;
+  time: string;
+
+  clock: any;
+  timedown: number;
   days: any;
   hours: any;
   minutes: any;
   seconds: any;
+  isTimerDisplay = false;
+  timerText: any;
 
   createNewTask(): void{
     if ( this.newTask.taskName !== ''){
@@ -43,20 +51,27 @@ export class AppComponent {
     this.tasks.splice(index,  1);
   }
 
-  startTimer(endDate: string ): void {
-    const countdownTime = new Date(endDate).getTime();
-    setInterval(( ) => {
-        const currentTime = new Date().getTime();
-        const timeRemaining = countdownTime - currentTime;
-        const daysRemaining = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-        const hoursRemaining = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const secondsRemaining = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-        this.days = daysRemaining;
-        this.hours = hoursRemaining;
-        this.minutes = minutesRemaining;
-        this.seconds = secondsRemaining;
+  showTimer(): void {
+    this.isTimerDisplay = !this.isTimerDisplay;
+    const countDownDate = new Date(this.date + ' ' + this.time).getTime();
+    this.clock = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        this.timerText = {
+          days,
+          hours,
+          minutes,
+          seconds
+        };
       }
       , 1000);
+  }
+  stopTimer(): void {
+    this.isTimerDisplay = false;
+    clearInterval(this.clock);
   }
 }
