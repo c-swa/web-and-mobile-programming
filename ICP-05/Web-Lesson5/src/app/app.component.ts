@@ -43,8 +43,7 @@ export class AppComponent {
     this.tasks.splice(index,  1);
   }
 
-  showTimer(): void {
-    this.isTimerDisplay = !this.isTimerDisplay;
+  startTimer(): void {
     const countDownDate = new Date(this.date + ' ' + this.time).getTime();
     this.clock = setInterval(() => {
         const now = new Date().getTime();
@@ -63,7 +62,6 @@ export class AppComponent {
       , 1000);
   }
   stopTimer(): void {
-    this.isTimerDisplay = false;
     const days = 0;
     const hours = 0;
     const minutes = 0;
