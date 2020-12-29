@@ -14,19 +14,11 @@ export class AppComponent {
 
   public newTask;
 
-  task = '';
-
   // Timer
-
   date: string;
   time: string;
 
   clock: any;
-  timedown: number;
-  days: any;
-  hours: any;
-  minutes: any;
-  seconds: any;
   isTimerDisplay = false;
   timerText: any;
 
@@ -72,6 +64,16 @@ export class AppComponent {
   }
   stopTimer(): void {
     this.isTimerDisplay = false;
+    const days = 0;
+    const hours = 0;
+    const minutes = 0;
+    const seconds = 0;
+    this.timerText = {
+      days,
+      hours,
+      minutes,
+      seconds
+    };
     clearInterval(this.clock);
   }
 }
