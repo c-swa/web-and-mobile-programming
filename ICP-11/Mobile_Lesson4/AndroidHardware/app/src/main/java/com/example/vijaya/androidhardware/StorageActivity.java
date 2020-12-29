@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 
 public class StorageActivity extends AppCompatActivity {
     EditText txt_content;
-    EditText contenttoDisplay;
+    EditText contentToDisplay;
     String FILENAME = "MyAppStorage";
 
     @Override
@@ -23,17 +23,34 @@ public class StorageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
         txt_content = (EditText) findViewById(R.id.id_txt_mycontent);
-        contenttoDisplay = (EditText) findViewById(R.id.id_txt_display);
+        contentToDisplay = (EditText) findViewById(R.id.id_txt_display);
     }
 
     public void saveTofile(View v) throws IOException {
-
-        // ICP Task4: Write the code to save the text
-
+        FileOutputStream fileOutputStream = openFileOutput(FILENAME, Context.MODE_APPEND);
+        fileOutputStream.write(txt_content.getText().toString().getBytes());
+        fileOutputStream.close();
+        Toast toast = Toast.makeText(getApplicationContext(), "File Saved!",Toast.LENGTH_LONG);
+        toast.show();
     }
 
     public void retrieveFromFile(View v) throws IOException {
+        FileInputStream fileInputStream = openFileInput(FILENAME);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
+        String bufferedReturn;
+        StringBuilder builder = new StringBuilder();
+
+        while((bufferedReturn = bufferedReader.readLine()) != null){
+            builder.append(bufferedReturn);
+        }
+        fileInputStream.close();
+        inputStreamReader.close();
+        bufferedReader.close();
+
+        contentToDisplay.setText(builder.toString());
+        contentToDisplay.setVisibility(View.VISIBLE);
         // ICP Task4: Write the code to display the above saved text
 
     }

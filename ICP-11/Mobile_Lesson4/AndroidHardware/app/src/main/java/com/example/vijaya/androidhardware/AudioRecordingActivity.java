@@ -75,8 +75,19 @@ public class AudioRecordingActivity extends AppCompatActivity {
     }
 
     private void startRecording() {
-
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+        // Need to set a file-path name here.
+        mRecorder.setOutputFile(mFileName);
         // ICP Task3: Write the code to recording the Audio
+        try {
+            mRecorder.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        mRecorder.start();
 
     }
 

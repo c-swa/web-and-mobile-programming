@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-clearcut-11.0.4.aar/42e9d69fada57d7663f5cc43ebfc3a18/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-clearcut-11.0.4.aar/42e9d69fada57d7663f5cc43ebfc3a18/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-clearcut-11.0.4.aar/42e9d69fada57d7663f5cc43ebfc3a18/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-clearcut-11.0.4.aar/5fad63c3977a3cebc5491dfd53277e1a/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-clearcut-11.0.4.aar/5fad63c3977a3cebc5491dfd53277e1a/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-clearcut-11.0.4.aar/5fad63c3977a3cebc5491dfd53277e1a/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

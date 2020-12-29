@@ -39,10 +39,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        // test added code?:
     }
-
 
     /**
      * Manipulates the map once available.
@@ -90,21 +87,17 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
         //Getting the current location of the user.
 
+
         // ICP Task1: Write the code to get the current location of the user
-        try {
-            if (userCurrentLocation.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-                Location new_location = userCurrentLocation.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                if (new_location != null){
-                    latitude = new_location.getLatitude();
-                    longitude = new_location.getLongitude();
-                    userCurrentLocationCoordinates = new LatLng(latitude, longitude);
-                }
-            } else {
-                System.out.println("Failed to get Latitude/Longitude");
+        if (userCurrentLocation.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            Location new_location = userCurrentLocation.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (new_location != null){
+                latitude = new_location.getLatitude();
+                longitude = new_location.getLongitude();
+                userCurrentLocationCoordinates = new LatLng(latitude, longitude);
             }
-        } catch (Exception e){
-            System.out.println("An Error occurred, Exception:");
-            System.out.println(e);
+        } else {
+            System.out.println("Failed to get Latitude/Longitude");
         }
         //Getting the address of the user based on latitude and longitude.
         try {

@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.0.4.aar/f04ca1b98f3a82aa0bf9b98945a7f095/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.0.4.aar/f04ca1b98f3a82aa0bf9b98945a7f095/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.0.4.aar/f04ca1b98f3a82aa0bf9b98945a7f095/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.0.4.aar/e961713507d2c5bb5ee91e427700e5e2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.0.4.aar/e961713507d2c5bb5ee91e427700e5e2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.0.4.aar/e961713507d2c5bb5ee91e427700e5e2/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

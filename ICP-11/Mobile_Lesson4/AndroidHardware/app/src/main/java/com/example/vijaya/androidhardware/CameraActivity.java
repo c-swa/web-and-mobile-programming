@@ -28,7 +28,7 @@ public class CameraActivity extends AppCompatActivity {
         capture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                callCamera(userImage);
             }
         });
 
@@ -39,6 +39,8 @@ public class CameraActivity extends AppCompatActivity {
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
         }
+        Toast toast = Toast.makeText(getApplicationContext(),"Image Captured!",Toast.LENGTH_LONG);
+        toast.show();
     }
 
     //If the photo is captured then set the image view to the photo captured.

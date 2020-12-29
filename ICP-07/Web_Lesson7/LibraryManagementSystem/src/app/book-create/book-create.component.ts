@@ -11,12 +11,12 @@ import {FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validat
 export class BookCreateComponent implements OnInit {
 
   bookForm: FormGroup;
-  isbn: string = '';
-  title: string = '';
-  description: string = '';
-  author: string = '';
-  publisher: string = '';
-  published_year: string = '';
+  isbn = '';
+  title = '';
+  description = '';
+  author = '';
+  publisher = '';
+  published_year = '';
 
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) {
   }
