@@ -33,10 +33,10 @@ public class QueryUtils {
         try {
             //TODO: 1. Create a URL from the requestUrl string and make a GET request to it
             //TODO: 2. Read from the Url Connection and store it as a string(jsonResponse)
-                /*TODO: 3. Parse the jsonResponse string obtained in step 2 above into JSONObject to extract the values of
-                        "mag","place","time","url"for every earth quake and create corresponding Earthquake objects with them
-                        Add each earthquake object to the list(earthquakes) and return it.
-                */
+            /*TODO: 3. Parse the jsonResponse string obtained in step 2 above into JSONObject to extract the values of
+                    "mag","place","time","url"for every earth quake and create corresponding Earthquake objects with them
+                    Add each earthquake object to the list(earthquakes) and return it.
+            */
 
             // Return the list of earthquakes
 
