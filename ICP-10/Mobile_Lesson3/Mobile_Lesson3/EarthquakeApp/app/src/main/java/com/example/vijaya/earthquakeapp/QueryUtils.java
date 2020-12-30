@@ -36,14 +36,12 @@ public class QueryUtils {
     public static List<Earthquake> fetchEarthquakeData2(String requestUrl) {
         // An empty ArrayList that we can start adding earthquakes to
         List<Earthquake> earthquakes = new ArrayList<>();
-        //  URL object to store the url for a given string
-        // URL url = null;               <--- I don't think I need this
         // A string to store the response obtained from rest call in the form of string
         try {
             URL httpURL = new URL(requestUrl);
             HttpURLConnection urlConnection = (HttpURLConnection) httpURL.openConnection();
-            // InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream()); // I don't think I need this since the below code works fine.
             BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            //DONE: 1. Create a URL from the requestUrl string and make a GET request to it
 
             double mag;
             String place;
@@ -66,6 +64,7 @@ public class QueryUtils {
                     response = response.substring(0,response.length()-1);
                 }
                 response = response.substring(response.indexOf("{\"mag\""),response.indexOf(",\"geometry"));
+                //DONE: 2. Read from the Url Connection and store it as a string(jsonResponse)
 
                 JSONObject responseObject = new JSONObject(response);
                 mag = responseObject.getDouble("mag");
@@ -74,17 +73,12 @@ public class QueryUtils {
                 url = responseObject.getString("url");
                 System.out.println(mag + " " + place + " " + time + " " + url);
                 earthquakes.add(new Earthquake(mag, place, time, url));
-            }
-
-            reader.close();
-            //DONE: 1. Create a URL from the requestUrl string and make a GET request to it
-
-            //DONE: 2. Read from the Url Connection and store it as a string(jsonResponse)
-
-            /*DONE: 3. Parse the jsonResponse string obtained in step 2 above into JSONObject to extract the values of
+                 /*DONE: 3. Parse the jsonResponse string obtained in step 2 above into JSONObject to extract the values of
                     "mag","place","time","url"for every earth quake and create corresponding Earthquake objects with them
                     Add each earthquake object to the list(earthquakes) and return it.
-            */
+                */
+            }
+            reader.close();
 
             // Return the list of earthquakes
 
