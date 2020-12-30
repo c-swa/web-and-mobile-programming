@@ -1,8 +1,12 @@
 package com.example.vijaya.androidhardware;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +21,22 @@ public class CameraActivity extends AppCompatActivity {
     ImageView userImage;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
 
+    // Requesting permission
+    private boolean permissionToCameraAccepted = false;
+    private String[] permissions = {Manifest.permission.CAMERA};
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case MY_CAMERA_REQUEST_CODE:
+                permissionToCameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+        }
+        if (!permissionToCameraAccepted)
+            finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +44,7 @@ public class CameraActivity extends AppCompatActivity {
         Button capture = (Button) findViewById(R.id.btn_take_photo);
         userImage = (ImageView) findViewById(R.id.view_photo);
 
+        ActivityCompat.requestPermissions(this, permissions, MY_CAMERA_REQUEST_CODE);
         // ICP Task2: Write the code to capture the image
         capture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +60,7 @@ public class CameraActivity extends AppCompatActivity {
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);
         }
-        Toast toast = Toast.makeText(getApplicationContext(),"Image Captured!",Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(),"Camera Opened",Toast.LENGTH_LONG);
         toast.show();
     }
 

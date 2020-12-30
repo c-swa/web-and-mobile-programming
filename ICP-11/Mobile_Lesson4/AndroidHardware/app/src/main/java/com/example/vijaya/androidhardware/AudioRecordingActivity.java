@@ -21,10 +21,10 @@ public class AudioRecordingActivity extends AppCompatActivity {
     private static String mFileName = null;
 
     private RecordButton mRecordButton = null;
-    private MediaRecorder mRecorder = null;
+    private MediaRecorder mRecorder = new MediaRecorder();
 
     private PlayButton mPlayButton = null;
-    private MediaPlayer mPlayer = null;
+    private MediaPlayer mPlayer = new MediaPlayer();
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -75,7 +75,7 @@ public class AudioRecordingActivity extends AppCompatActivity {
     }
 
     private void startRecording() {
-        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         // Need to set a file-path name here.
@@ -94,8 +94,7 @@ public class AudioRecordingActivity extends AppCompatActivity {
 
     private void stopRecording() {
         mRecorder.stop();
-        mRecorder.release();
-        mRecorder = null;
+        mRecorder.reset();
     }
 
     class RecordButton extends android.support.v7.widget.AppCompatButton {
