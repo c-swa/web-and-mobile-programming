@@ -1,5 +1,6 @@
 package com.example.vijaya.earthquakeapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,7 +55,10 @@ public class EarthquakeActivity extends AppCompatActivity {
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
 
-                //TODO: 4. Create a new intent to view the earthquake URI.Send the intent to launch a new activity
+                //DONE: 4. Create a new intent to view the earthquake URI.Send the intent to launch a new activity
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(earthquakeUri);
+                startActivity(intent);
 
             }
         });

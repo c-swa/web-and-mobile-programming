@@ -51,7 +51,7 @@ public class QueryUtils {
             String url;
 
             String response;
-            String fullResponse = "";
+            JSONArray responseArray = new JSONArray();
 
             boolean entry = true;
             boolean exit = false;
@@ -65,16 +65,23 @@ public class QueryUtils {
                 } else if (exit) {
                     response = response.substring(0,response.length()-1);
                 }
-                System.out.println(response);
-                // JSONObject earthquakeJSON = new JSONObject(jsonResponse);
+                response = response.substring(response.indexOf("{\"mag\""),response.indexOf(",\"geometry"));
 
-                // earthquakes.add(new Earthquake( mag, place, time, url));
+                JSONObject responseObject = new JSONObject(response);
+                mag = responseObject.getDouble("mag");
+                place = responseObject.getString("place");
+                time = responseObject.getLong("time");
+                url = responseObject.getString("url");
+                System.out.println(mag + " " + place + " " + time + " " + url);
+                earthquakes.add(new Earthquake(mag, place, time, url));
             }
+
             reader.close();
             //DONE: 1. Create a URL from the requestUrl string and make a GET request to it
 
-            //TODO: 2. Read from the Url Connection and store it as a string(jsonResponse)
-            /*TODO: 3. Parse the jsonResponse string obtained in step 2 above into JSONObject to extract the values of
+            //DONE: 2. Read from the Url Connection and store it as a string(jsonResponse)
+
+            /*DONE: 3. Parse the jsonResponse string obtained in step 2 above into JSONObject to extract the values of
                     "mag","place","time","url"for every earth quake and create corresponding Earthquake objects with them
                     Add each earthquake object to the list(earthquakes) and return it.
             */
