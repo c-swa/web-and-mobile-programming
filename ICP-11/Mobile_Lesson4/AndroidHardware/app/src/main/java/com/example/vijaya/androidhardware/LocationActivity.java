@@ -1,19 +1,21 @@
 package com.example.vijaya.androidhardware;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,7 +31,8 @@ import java.util.List;
 public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     public Geocoder geocoder;
-    double latitude = 0, longitude = 0;
+    private double latitude = 0, longitude = 0;
+    private LatLng userCurrentLocationCoordinates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCaptured){
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -74,8 +80,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             public void onProviderDisabled(String provider) {
             }
         };
-        
-        LatLng userCurrentLocationCoordinates = new LatLng(latitude,longitude);
+
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat
                 .checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -85,21 +90,27 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             return;
         }
 
-        //Getting the current location of the user.
-
-
-        // ICP Task1: Write the code to get the current location of the user
-        if (userCurrentLocation.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            Location new_location = userCurrentLocation.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if (new_location != null){
-                latitude = new_location.getLatitude();
-                longitude = new_location.getLongitude();
-                userCurrentLocationCoordinates = new LatLng(latitude, longitude);
+        this.userCurrentLocationCoordinates = new LatLng(0,0);
+        //Getting the location of the user in Latitude and Longitude
+        if (userCurrentLocation.isProviderEnabled(LocationManager.PASSIVE_PROVIDER)) {
+            Location location = userCurrentLocation.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            if (location != null) {
+                this.latitude = location.getLatitude();
+                this.longitude = location.getLongitude();
+                this.userCurrentLocationCoordinates = new LatLng(latitude,longitude);
+                Toast toast = Toast.makeText(getApplicationContext(), "Assigned LatLng to Current Location",Toast.LENGTH_LONG);
+                toast.show();
+            } else {
+                System.out.println("Failed to capture device Latitude/Longitude");
+                Toast.makeText(getApplicationContext(), "Unable to retrieve Lat/Lng", Toast.LENGTH_LONG).show();;
             }
         } else {
-            System.out.println("Failed to get Latitude/Longitude");
+            System.out.println("Failed to retrieve User's GPS Provider");
+            Toast toast = Toast.makeText(getApplicationContext(), "Unable to retrieve GPS provider", Toast.LENGTH_LONG);
+            toast.show();
+            //Getting the address of the user based on latitude and longitude.
         }
-        //Getting the address of the user based on latitude and longitude.
+
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
             String city = addresses.get(0).getLocality();
@@ -119,7 +130,5 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_maps)));
         //Setting the zoom level of the map.
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCoordinates, 7));
-
     }
-
 }
